@@ -13,7 +13,7 @@ public class Application {
         GameMachine gameMachine = new GameMachine();
         OutputView outputView = new OutputView();
 
-        String[] players = inputView.setPlayers();
+        List<String> players = inputView.setPlayers();
         validator.validatePlayersName(players);
         int playTimes = inputView.setPlayTimes();
         validator.validatePlayTimes(playTimes);

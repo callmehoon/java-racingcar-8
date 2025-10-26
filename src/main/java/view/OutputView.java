@@ -13,9 +13,9 @@ public class OutputView {
         System.out.println("\n실행 결과");
     }
 
-    public void printRoundResult(String[] carNames, String[] moveCounts) {
-        for (int i = 0; i < carNames.length; i++) {
-            System.out.println(carNames[i] + " : " + moveCounts[i]);
+    public void printRoundResult(List<String> carNames, List<String> moveCounts) {
+        for (int i = 0; i < carNames.size(); i++) {
+            System.out.println(carNames.get(i) + " : " + moveCounts.get(i));
         }
         System.out.println();
     }

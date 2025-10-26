@@ -1,6 +1,7 @@
 package view;
 
 import camp.nextstep.edu.missionutils.Console;
+import java.util.List;
 
 public class InputView {
     /*
@@ -9,11 +10,11 @@ public class InputView {
     3. 사용자 입력은 Console.readLine()을 이용한다.
      */
 
-    public String[] setPlayers() {
+    public List<String> setPlayers() {
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
         String players = Console.readLine();
 
-        return players.split("[,]");
+        return List.of(players.split("[,]"));
     }
 
     public int setPlayTimes() {

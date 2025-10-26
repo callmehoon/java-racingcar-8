@@ -2,7 +2,7 @@ package domain;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 public class GameMachine {
@@ -13,15 +13,13 @@ public class GameMachine {
     4. 매 시도마다 각 자동차의 이름과 현재 전진 상태를 출력한다.
      */
 
-    private String[] carNames;
-    private String[] moveCounts;
+    private List<String> carNames;
+    private List<String> moveCounts;
     private static final int FORWARD_CONDITION = 4;
 
-    public void setupCars(String[] names) {
+    public void setupCars(List<String> names) {
         this.carNames = names;
-        this.moveCounts = new String[names.length];
-
-        Arrays.fill(this.moveCounts, "");
+        this.moveCounts = new ArrayList<>(Collections.nCopies(names.size(), ""));
     }
 
     public void playRound() {
@@ -29,11 +27,12 @@ public class GameMachine {
             return;
         }
 
-        for (int i = 0; i < carNames.length; i++) {
+        for (int i = 0; i < carNames.size(); i++) {
             int randomNumber = Randoms.pickNumberInRange(0, 9);
 
             if (randomNumber >= FORWARD_CONDITION) {
-                moveCounts[i] += "-";
+                String currentMove = moveCounts.get(i);
+                moveCounts.set(i, currentMove + "-");
             }
         }
     }
@@ -48,20 +47,20 @@ public class GameMachine {
             }
         }
 
-        for (int i = 0; i < this.carNames.length; i++) {
-            if (this.moveCounts[i].length() == maxScore) {
-                winners.add(this.carNames[i]);
+        for (int i = 0; i < this.carNames.size(); i++) {
+            if (moveCounts.get(i).length() == maxScore) {
+                winners.add(carNames.get(i));
             }
         }
 
         return winners;
     }
 
-    public String[] getCarNames() {
+    public List<String> getCarNames() {
         return carNames;
     }
 
-    public String[] getMoveCounts() {
+    public List<String> getMoveCounts() {
         return moveCounts;
     }
 }

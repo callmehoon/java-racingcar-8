@@ -1,5 +1,7 @@
 package validator;
 
+import java.util.List;
+
 public class Validator {
     /*
     1. 자동차 이름은 5자 이하만 허용
@@ -10,7 +12,7 @@ public class Validator {
     private static final int MAX_NAME_LENGTH = 5;
     private static final int MIN_PLAY_TIMES = 1;
 
-    public void validatePlayersName(String[] playersTokens) {
+    public void validatePlayersName(List<String> playersTokens) {
         for (String token : playersTokens) {
             if (token.length() > MAX_NAME_LENGTH) {
                 throw new IllegalArgumentException("자동차 이름은 5자 이하로 설정해야 합니다.");
