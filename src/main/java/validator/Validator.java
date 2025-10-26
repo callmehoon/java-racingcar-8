@@ -1,4 +1,4 @@
-package validate;
+package validator;
 
 public class Validator {
     /*
@@ -7,9 +7,12 @@ public class Validator {
     3. 시도 횟수가 1회 이상인지 검증
      */
 
+    private static final int MAX_NAME_LENGTH = 5;
+    private static final int MIN_PLAY_TIMES = 1;
+
     public void validatePlayersName(String[] playersTokens) {
         for (String token : playersTokens) {
-            if (token.length() > 5) {
+            if (token.length() > MAX_NAME_LENGTH) {
                 throw new IllegalArgumentException("자동차 이름은 5자 이하로 설정해야 합니다.");
             }
             if (token.trim().isEmpty()) {
@@ -19,7 +22,7 @@ public class Validator {
     }
 
     public void validatePlayTimes(int playTimes) {
-        if (playTimes < 1) {
+        if (playTimes < MIN_PLAY_TIMES) {
             throw new IllegalArgumentException("시도할 횟수는 1회 이상으로 설정해야 합니다.");
         }
     }

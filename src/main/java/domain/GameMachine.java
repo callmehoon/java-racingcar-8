@@ -15,6 +15,7 @@ public class GameMachine {
 
     private String[] carNames;
     private String[] moveCounts;
+    private static final int FORWARD_CONDITION = 4;
 
     public void setupCars(String[] names) {
         this.carNames = names;
@@ -31,7 +32,7 @@ public class GameMachine {
         for (int i = 0; i < carNames.length; i++) {
             int randomNumber = Randoms.pickNumberInRange(0, 9);
 
-            if (randomNumber >= 4) {
+            if (randomNumber >= FORWARD_CONDITION) {
                 moveCounts[i] += "-";
             }
         }
