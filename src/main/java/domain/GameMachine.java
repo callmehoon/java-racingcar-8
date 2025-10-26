@@ -55,4 +55,12 @@ public class GameMachine {
 
         return winners;
     }
+
+    public String[] getCarNames() {
+        return carNames;
+    }
+
+    public String[] getMoveCounts() {
+        return moveCounts;
+    }
 }
